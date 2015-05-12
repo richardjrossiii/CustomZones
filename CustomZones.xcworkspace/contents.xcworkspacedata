@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:MmapObject/MmapObject.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:StackObject/StackObject.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:CustomZones/CustomZones.xcodeproj">
+   </FileRef>
+</Workspace>
