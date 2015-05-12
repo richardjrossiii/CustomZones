@@ -8,12 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-//! Project version number for MmapObject.
-FOUNDATION_EXPORT double MmapObjectVersionNumber;
+@interface NSObject(MmapObject)
 
-//! Project version string for MmapObject.
-FOUNDATION_EXPORT const unsigned char MmapObjectVersionString[];
++(instancetype) allocAsMMappedObjectInFile:(NSFileHandle *) fh;
 
-// In this header, you should import all the public headers of your framework using statements like #import <MmapObject/PublicHeader.h>
-
-
+@end

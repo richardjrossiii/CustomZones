@@ -94,14 +94,14 @@ static void (*originalDeallocIMP)(id, SEL) = NULL;
 }
 
 -(void) _CZZone_dealloc {
-    if (__builtin_expect((uintptr_t) CZAllocationsMap[self], 0)) {
+    if (__builtin_expect(CZAllocationsMap.count((void *) self) == 0, 1)) {
         // Call original dealloc implementation
         return originalDeallocIMP(self, _cmd);
     }
 
+    malloc_zone_t *zone = CZAllocationsMap.at((void *) self);
     objc_destructInstance(self);
 
-    malloc_zone_t *zone = CZAllocationsMap[self];
     zone->free(zone, self);
 }
 

@@ -18,7 +18,14 @@
 
 @implementation StackZone
 
++(void) initialize {
+    if (self == [StackZone class]) {
+        CZRegisterZoneClass(self);
+    }
+}
+
 +(StackZone *) instance {
+    // One zone per thread, pointing somewhere near the top (or past) of the stack.
     static __thread StackZone *zone;
     if (zone == nil) {
         zone = [StackZone new];

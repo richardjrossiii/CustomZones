@@ -9,7 +9,21 @@
 #import <Cocoa/Cocoa.h>
 #import <XCTest/XCTest.h>
 
+#import "MmapObject.h"
+
+@interface MappedObject : NSObject
+
+@property int x, y;
+@property float z;
+
+@end
+
+@implementation MappedObject
+@end
+
 @interface MmapObjectTests : XCTestCase
+
+@property NSFileHandle *fileHandle;
 
 @end
 
@@ -17,24 +31,41 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+
+    self.fileHandle = [[NSFileHandle alloc] initWithFileDescriptor:0];
 }
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
+- (void)testObjectHasReadwriteProperties {
+    MappedObject *mappedObject = [[MappedObject allocAsMMappedObjectInFile:self.fileHandle] init];
+
+    mappedObject.x = 5;
+    mappedObject.y = 7;
+    mappedObject.z = M_PI;
+
+    XCTAssertEqual(mappedObject.x, 5);
+    XCTAssertEqual(mappedObject.y, 7);
+    XCTAssertEqual(mappedObject.z, M_PI);
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
-}
+- (void)testSharedObjectChangesPropagate {
+    MappedObject *object1 = [[MappedObject allocAsMMappedObjectInFile:self.fileHandle] init];
+    MappedObject *object2 = [[MappedObject allocAsMMappedObjectInFile:self.fileHandle] init];
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+    XCTAssertNotEqual(object1, object2);
+
+    object1.x = 5;
+
+    XCTAssertEqual(object1.x, object2.x);
+
+    object2.y = 7;
+
+    XCTAssertEqual(object1.y, object2.y);
+
+    object1.z = M_PI;
+    object2.z = object2.z / 2;
+
+    XCTAssertEqual(object1.z, object2.z);
+    XCTAssertEqual(object1.z, M_PI_2);
 }
 
 @end

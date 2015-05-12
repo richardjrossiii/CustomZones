@@ -11,6 +11,7 @@
 		F569DC4D1B01856100245F6E /* StackObject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F569DC411B01856100245F6E /* StackObject.framework */; };
 		F569DC541B01856100245F6E /* StackObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F569DC531B01856100245F6E /* StackObjectTests.m */; };
 		F569DC5E1B01857A00245F6E /* StackObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F569DC5D1B01857A00245F6E /* StackObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F569DCC01B0260AB00245F6E /* CustomZones.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F569DCBF1B0260AB00245F6E /* CustomZones.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		F569DC521B01856100245F6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F569DC531B01856100245F6E /* StackObjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StackObjectTests.m; sourceTree = "<group>"; };
 		F569DC5D1B01857A00245F6E /* StackObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackObject.m; sourceTree = "<group>"; };
+		F569DCBF1B0260AB00245F6E /* CustomZones.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CustomZones.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CustomZones-dvubbpncoleyjyajlpzfsshrkrwh/Build/Products/Debug/CustomZones.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F569DCC01B0260AB00245F6E /* CustomZones.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +58,7 @@
 		F569DC371B01856100245F6E = {
 			isa = PBXGroup;
 			children = (
+				F569DCBF1B0260AB00245F6E /* CustomZones.framework */,
 				F569DC431B01856100245F6E /* StackObject */,
 				F569DC501B01856100245F6E /* StackObjectTests */,
 				F569DC421B01856100245F6E /* Products */,
@@ -325,6 +329,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/CustomZones-dvubbpncoleyjyajlpzfsshrkrwh/Build/Products/Debug",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = StackObject/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -342,6 +350,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/CustomZones-dvubbpncoleyjyajlpzfsshrkrwh/Build/Products/Debug",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = StackObject/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -402,6 +414,7 @@
 				F569DC591B01856100245F6E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F569DC5A1B01856100245F6E /* Build configuration list for PBXNativeTarget "StackObjectTests" */ = {
 			isa = XCConfigurationList;
@@ -410,6 +423,7 @@
 				F569DC5C1B01856100245F6E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

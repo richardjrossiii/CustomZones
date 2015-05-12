@@ -9,32 +9,27 @@
 #import <Cocoa/Cocoa.h>
 #import <XCTest/XCTest.h>
 
+#import "StackObject.h"
+
 @interface StackObjectTests : XCTestCase
 
 @end
 
 @implementation StackObjectTests
 
-- (void)setUp {
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+- (void)testStackObjectIsObject {
+    __stack NSObject *obj = [stack(NSObject) init];
+
+    XCTAssertNotNil(obj);
+    XCTAssertNotNil([obj description]);
 }
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
+- (void)testStackObjectIsOnStack {
+    __stack NSObject *obj = [stack(NSObject) init];
+    ptrdiff_t diff = ((void *) &obj - (__bridge void *) (obj));
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
-}
-
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+    // the two pointers should be nearly identical
+    XCTAssertLessThan(diff, PAGE_SIZE);
 }
 
 @end
